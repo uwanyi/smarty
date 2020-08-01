@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.4.1/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css}">
+    <script src="/webjars/jquery/1.12.4/jquery.min.js" th:src="@{/webjars/jquery/1.12.4/jquery.min.js}"></script>
+    <script src="/webjars/bootstrap/3.4.1/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+</head>
+<body style=" background: url(http://global.bing.com/az/hprichbg/rb/RavenWolf_EN-US4433795745_1920x1080.jpg) no-repeat center center fixed; background-size: 100%;">
+
+
+<div class="modal-dialog" style="margin-top: 10%;">
+    <div class="modal-content">
+        <form action="/pass/user/login" th:action="@{/pass/user/login}" method="post">
+            <div class="modal-header">
+
+                <h4 class="modal-title text-center" id="myModalLabel">登录</h4>
+            </div>
+            <div class="modal-body" id = "model-body">
+                <div class="form-group">
+
+                    <input type="text" name="username" class="form-control"placeholder="用户名" autocomplete="off">
+                </div>
+                <input name="_csrf" th:name="${_csrf.parameterName}" value="" th:value="${_csrf.token}" type="hidden">
+                <div class="form-group">
+
+                    <input type="password" name="password" class="form-control" placeholder="密码" autocomplete="off">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <span style="color: red;" th:text="用户名或密码错误" th:if="${param.error}"></span>
+                    <button type="submit" class="btn btn-primary form-control">登录</button>
+                </div>
+                <!--<div class="form-group">
+                    <button type="button" class="btn btn-default form-control">注册</button>
+                </div>-->
+
+            </div>
+        </form>
+    </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+
+</body>
+</html>
